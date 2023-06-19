@@ -12,6 +12,7 @@
     </div>
     <div id="admin_form" class="admin_content_form w-75  mx-auto ">
         <form class="p-5 shadow-lg mt-3 rounded" action="">
+            <input type="hidden" name="cat_id" value="">
             <div class="form-floating mb-3">
                 <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name@example.com">
                 <label for="floatingInput">Name</label>
