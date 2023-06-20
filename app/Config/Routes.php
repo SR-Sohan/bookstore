@@ -43,6 +43,9 @@ $routes->group('admin', static function ($routes) {
     // Categories Routes
     $routes->get('categories', 'Admin\CategoriesController::index');
     $routes->get("categories/data",'Admin\CategoriesController::getCategories');
+    $routes->post("categories/create",'Admin\CategoriesController::createCategories');
+    $routes->post("categories/delete",'Admin\CategoriesController::deleteCategories');
+    $routes->get("categories/search",'Admin\CategoriesController::searchCategories');
 
 
     $routes->get('subcategories', 'Admin\SubCategoriesController::index');

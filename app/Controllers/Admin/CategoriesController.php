@@ -11,26 +11,74 @@ class CategoriesController extends BaseController
     public function __construct()
     {
         $this->model = new  CategoriesModel();
-        
     }
     public function index()
     {
         return view("admin/categories");
     }
 
-    public function getCategories(){
-
+    public function getCategories()
+    {
+        $page = $this->request->getVar('page') ?? 1;
         $all = [
             "total" => $this->model->countAll(),
-            "categories" => $this->model->paginate(1),
-            "pager" => $this->model->pager
+            "categories" => $this->model->orderBy('id', 'desc')->paginate(10, 'default', $page),
+            "pager" => $this->model->pager->links()
         ];
 
         return $this->response->setJSON($all);
-
     }
 
-    public function create(){
-        return view("admin/addcategories");
+    public function createCategories()
+    {
+        $catId = $this->request->getVar("cat_id");
+        $data = [
+            "name" => $this->request->getVar("name"),
+            "description" => $this->request->getVar("description"),
+        ];
+
+        if ($catId != "") {
+            if($this->model->update($catId,$data)){
+                return $this->response->setJSON(["status"=> true,"message"=> "Categories Update Successful"]);
+            }else{
+                return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Update"]);
+            }
+
+        } else {
+            if($this->model->insert($data)){
+                return $this->response->setJSON(["status"=> true,"message"=> "Categories Insert Successful"]);
+            }else{
+                return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Insert"]);
+            }
+        }
+    }
+
+
+    public function deleteCategories()
+    {
+        $catId = $this->request->getVar("cat_id");
+
+        if( $this->model->where('id', $catId)->delete()){
+            return $this->response->setJSON(["status"=> true,"message"=> "Categories Delete Successful"]);
+        }else{
+            return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Delete"]);
+        }
+    }
+
+    public function searchCategories(){
+
+        $text = $this->request->getVar("text");
+        $page = $this->request->getVar('page') ?? 1;
+
+        $result = $this->model->like('name', $text)->findAll();
+
+        $all = [
+            "total" => $this->model->like('name', $text)->countAll(),
+            "categories" => $this->model->like('name', $text)->orderBy('id', 'desc')->paginate(10, 'default', $page),
+            "pager" => $this->model->pager->links()
+        ];
+            return $this->response->setJSON($all);
+        
+
     }
 }

@@ -22,7 +22,22 @@
     background-color: tomato;
     color: #fff;
 }
-
+#pagination-links ul li.active a{
+  
+   background-color: red;
+}
+#pagination-links ul li a{
+    background-color: rgb(28, 90, 80);
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+}
+.search_form input[type="text"]{
+    padding: 10px 25px;
+    border: 1px solid teal;
+    border-radius: 25px;
+}
 /* 
 
 ================================================================
