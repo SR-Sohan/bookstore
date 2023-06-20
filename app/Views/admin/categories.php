@@ -41,14 +41,30 @@
                 </tr>
             </tbody>
         </table>
+        <div id="pagination-links">       
+        </div>
     </div>
 
 </div>
+<?= $this->endSection() ?>
 
 
+<?= $this->section("script") ?>
 
-
-
-
+<script>
+    $(document).ready(function(){
+       function loadData(){
+        $.ajax({
+            url: "<?= base_url('admin/categories/data') ?>",
+            type: "GET",
+            success: function(data){
+                $('#pagination-links').html(data.pager.links);
+                console.log(data);
+            }
+        })
+       }
+       loadData();
+    })
+</script>
 
 <?= $this->endSection() ?>
