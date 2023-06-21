@@ -38,17 +38,16 @@ class CategoriesController extends BaseController
         ];
 
         if ($catId != "") {
-            if($this->model->update($catId,$data)){
-                return $this->response->setJSON(["status"=> true,"message"=> "Categories Update Successful"]);
-            }else{
-                return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Update"]);
+            if ($this->model->update($catId, $data)) {
+                return $this->response->setJSON(["status" => true, "message" => "Categories Update Successful"]);
+            } else {
+                return $this->response->setJSON(["status" => false, "message" => "Categories Can't Update"]);
             }
-
         } else {
-            if($this->model->insert($data)){
-                return $this->response->setJSON(["status"=> true,"message"=> "Categories Insert Successful"]);
-            }else{
-                return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Insert"]);
+            if ($this->model->insert($data)) {
+                return $this->response->setJSON(["status" => true, "message" => "Categories Insert Successful"]);
+            } else {
+                return $this->response->setJSON(["status" => false, "message" => "Categories Can't Insert"]);
             }
         }
     }
@@ -58,27 +57,34 @@ class CategoriesController extends BaseController
     {
         $catId = $this->request->getVar("cat_id");
 
-        if( $this->model->where('id', $catId)->delete()){
-            return $this->response->setJSON(["status"=> true,"message"=> "Categories Delete Successful"]);
-        }else{
-            return $this->response->setJSON(["status"=> false,"message"=> "Categories Can't Delete"]);
+        if ($this->model->where('id', $catId)->delete()) {
+            return $this->response->setJSON(["status" => true, "message" => "Categories Delete Successful"]);
+        } else {
+            return $this->response->setJSON(["status" => false, "message" => "Categories Can't Delete"]);
         }
     }
 
-    public function searchCategories(){
+    public function searchCategories()
+    {
 
         $text = $this->request->getVar("text");
         $page = $this->request->getVar('page') ?? 1;
 
-        $result = $this->model->like('name', $text)->findAll();
+        //$result = $this->model->like('name', $text)->findAll();
 
         $all = [
             "total" => $this->model->like('name', $text)->countAll(),
             "categories" => $this->model->like('name', $text)->orderBy('id', 'desc')->paginate(10, 'default', $page),
             "pager" => $this->model->pager->links()
         ];
-            return $this->response->setJSON($all);
-        
+        return $this->response->setJSON($all);
+    }
 
+    public function autoComplete(){
+
+        $term = $this->request->getVar('term');
+        $results = $this->model->like('name', $term)->findAll();
+
+        return $this->response->setJSON($results);
     }
 }

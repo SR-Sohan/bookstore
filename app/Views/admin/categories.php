@@ -27,9 +27,14 @@
         </form>
     </div>
     <div class="admin_content_table mt-5">
-        <div class="search_form my-4">
-            <input type="text" name="search" id="search" placeholder="Search categories...">
-            <input id="searchBtn" class="btn btn-outline-danger" type="button" value="Search">
+        <div class="data_manage_section my-4 d-flex align-items-center justify-content-between">
+            <div class="search_form ">
+                <input type="text" name="search" id="search" placeholder="Search categories...">
+                <input id="searchBtn" class="btn btn-outline-danger" type="button" value="Search">
+            </div>
+            <div class="refresh_area">
+                <button id="refresh" class="btn btn-outline-danger"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+            </div>
         </div>
         <table class="table table-success table-striped">
             <thead>
@@ -42,11 +47,7 @@
                 </tr>
             </thead>
             <tbody id="tbody">
-                <tr>
-                    <td>1</td>
-                    <td>Golpo</td>
-                    <td> <button class="btn btn-outline-success">Edit</button> <button class="btn btn-outline-danger">Delete</button></td>
-                </tr>
+
             </tbody>
         </table>
         <div id="pagination-links" class="d-flex justify-content-center">
@@ -89,6 +90,7 @@
             $("#admin_form").hide(400);
             let icon = $("#icon");
             icon.toggleClass('fa-plus fa-minus');
+            
         }
 
         // Load categories
@@ -216,6 +218,30 @@
             icon.toggleClass('fa-plus fa-minus');
         })
 
+        // Search Autocomplete
+        $('#search').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "<?= base_url('admin/categories/autocomplete'); ?>",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    success: function(data) {
+
+                        var suggestions = [];
+                        $.each(data, function(index, item) {
+                            suggestions.push(item.name);
+                        });
+                        response(suggestions);
+                    }
+                });
+            },
+            minLength: 1
+        });
+
+        // Search section
         $("#searchBtn").click(function() {
             let text = $("#search").val();
             if (text == "") {
@@ -228,12 +254,22 @@
                         text: text
                     },
                     success: function(data) {
-
                         showCategories(data)
-
                     }
                 })
             }
+        })
+
+
+
+        // Refresh 
+        $("#refresh").click(function() {
+            var isFormVisible = $('#admin_form').is(":visible");
+            if(isFormVisible){
+                clearform();
+            }
+            $("#search").val("");     
+            loadData(1);
         })
     })
 </script>
