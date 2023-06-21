@@ -48,8 +48,10 @@ $routes->group('admin', static function ($routes) {
     $routes->get("categories/search",'Admin\CategoriesController::searchCategories');    
     $routes->post("categories/autocomplete",'Admin\CategoriesController::autoComplete');
 
-
+    // Subcategories Routes
     $routes->get('subcategories', 'Admin\SubCategoriesController::index');
+    $routes->get("subcategories/data",'Admin\SubCategoriesController::getSubCategories');
+
     $routes->get('writers', 'Admin\WriterController::index');
     $routes->get('publishers', 'Admin\PublisherController::index');
 });
