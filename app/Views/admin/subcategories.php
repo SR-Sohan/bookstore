@@ -12,9 +12,9 @@
     </div>
     <div id="admin_form" class="admin_content_form w-75  mx-auto ">
         <form class="p-5 shadow-lg mt-3 rounded" action="">
-            <input type="hidden" name="sub_id" id="subId">
+            <input type="hidden" name="sub_id" id="subId" value="">
             <div class="form-floating mb-3">
-                <select id="category" name="category" class="form-select" aria-label="Default select example">
+                <select id="category_id" name="category" class="form-select" aria-label="Default select example">
                     <option value="-1" selected>Select Category</option>
                     <?php
                     foreach ($categories as $category) {
@@ -25,12 +25,12 @@
                 </select>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="name@example.com">
+                <label for="name">Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input id="description" type="text" name="description" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Description</label>
+                <input id="description" type="text" name="description" class="form-control" id="description" placeholder="description">
+                <label for="description">Description</label>
             </div>
             <input id="addBtn" class="btn btn-outline-danger" type="button" value="Add SubCategory">
         </form>
@@ -80,60 +80,131 @@
 
 <?= $this->section("script") ?>
 <script>
-    // Clear form
-    function clearform() {
-        $("#subId").val("");
-        $("#name").val("");
-        $("#description").val("");
-        $("#addBtn").val('Add');
-        $("#admin_form").hide(400);
-        let icon = $("#icon");
-        icon.toggleClass('fa-plus fa-minus');
+    $(document).ready(function() {
+        // Clear form
+        function clearform() {
+            $("#category_id").val("-1");
+            $("#name").val("");
+            $("#description").val("");
+            $("#addBtn").val('Add');
+            $("#admin_form").hide(400);
+            let icon = $("#icon");
+            icon.toggleClass('fa-plus fa-minus');
 
-    }
+        }
 
-    // Show Subcategories
-    function showCategories(data) {
-        let html;
-        $.each(data.subcategories, function(index, subcat) {
-            html += `<tr>`;
-            html += "<td></td>";
-            html += `<td>${index + 1}</td>`;
-            html += `<td id="cat_name">${subcat.name}</td>`;
-            html += `<td id="cat_name">${subcat.catname}</td>`;
-            html += `<td id="cat_des">${subcat.description}</td>`;
-            html += `<td> <button data-id="${subcat.id}" id="editBtn" class="btn btn-outline-success">Edit</button> <button data-id="${subcat.id}" id="deleteBtn"  class="btn btn-outline-danger">Delete</button> </td>`;
-            html += `</tr>`;
-        })
-        $("#tbody").html(html);
-        $('#pagination-links').empty().append(data.pager);
-    }
-    //Load SubCategories
-    function loadData(pageNumber) {
-        $.ajax({
-            url: "<?= base_url('admin/subcategories/data') ?>",
-            type: "GET",
-            data: {
-                page: pageNumber
-            },
-            success: function(data) {
-                if (data.subcategories) {
-                    showCategories(data)
+        // Show Subcategories
+        function showCategories(data) {
+            let html;
+            $.each(data.subcategories, function(index, subcat) {
+                html += `<tr>`;
+                html += "<td></td>";
+                html += `<td>${index + 1}</td>`;
+                html += `<td id="cat_name">${subcat.name}</td>`;
+                html += `<td id="cat_name">${subcat.catname}</td>`;
+                html += `<td id="cat_des">${subcat.description}</td>`;
+                html += `<td> <button data-id="${subcat.id}" id="editBtn" class="btn btn-outline-success">Edit</button> <button data-id="${subcat.id}" id="deleteBtn"  class="btn btn-outline-danger">Delete</button> </td>`;
+                html += `</tr>`;
+            })
+            $("#tbody").html(html);
+            $('#pagination-links').empty().append(data.pager);
+        }
+        //Load SubCategories
+        function loadData(pageNumber) {
+            $.ajax({
+                url: "<?= base_url('admin/subcategories/data') ?>",
+                type: "GET",
+                data: {
+                    page: pageNumber
+                },
+                success: function(data) {
+                    if (data.subcategories) {
+                        showCategories(data)
+                    }
                 }
-            }
+            })
+        }
+        loadData(1);
+
+        // Categories pagination
+        $('#pagination-links').on('click', 'a', function(e) {
+            e.preventDefault();
+            let pageNumber = $(this).attr('href').split('page=')[1];
+            loadData(pageNumber);
+        });
+
+        // Add Subcategories 
+        $("#addBtn").click(function() {
+            let sub_id = $("#subId").val();
+            let cat_id = $("#category_id").val();
+            let name = $("#name").val();
+            let description = $("#description").val();
+            $.ajax({
+                url: "<?= base_url("admin/subcategories/create") ?>",
+                type: "POST",
+                data: {
+                    sub_id: sub_id,
+                    cat_id: cat_id,
+                    name: name,
+                    description: description
+                },
+                success: function(data) {
+                    if (data.status) {
+                        Swal.fire(
+                            'Good job!',
+                            data.message,
+                            'success'
+                        ).then(() => {
+                            loadData(1);
+                            clearform();
+                        })
+
+                    } else {
+                        alert(data.message);
+                    }
+                }
+            })
+
+
         })
-    }
-    loadData(1);
-    // Categories pagination
-    $('#pagination-links').on('click', 'a', function(e) {
-        e.preventDefault();
-        let pageNumber = $(this).attr('href').split('page=')[1];
-        loadData(pageNumber);
-    });
 
-    // Add Subcategories 
-    $("#addBtn").click(function() {
+        // Delete SubCategories
+        $("#tbody").on("click", "#deleteBtn", function() {
+            let id = $(this).data('id');
+            Swal.fire({
+                    title: 'Do you want to delete the Categories??',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Don't delete`,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "<?= base_url("admin/subcategories/delete") ?>",
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(data) {
+                                if (data.status) {
+                                    Swal.fire(
+                                        'Good job!',
+                                        data.message,
+                                        'success'
+                                    ).then(() => {
+                                        loadData(1);
+                                    })
+                                }
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
 
+                })
+
+        });
     })
 </script>
 <?= $this->endSection() ?>
