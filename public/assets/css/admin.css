@@ -38,6 +38,13 @@
     border: 1px solid teal;
     border-radius: 25px;
 }
+
+#tbody tr td img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 /* 
 
 ================================================================

@@ -42,7 +42,7 @@
                 <input id="searchBtn" class="btn btn-outline-danger" type="button" value="Search">
             </div>
             <select id="filterSubCategory" style="width: 220px;" class="form-select mr-5" aria-label="Default select example">
-                <option value="-1" selected>Filter By Category</option>
+                <option value="-1" >Filter By Category</option>
                 <?php
                 foreach ($categories as $category) {
                 ?>
@@ -306,6 +306,7 @@
                 clearform();
             }
             $("#search").val("");
+            $("#filterSubCategory").val("-1");
             loadData(1);
         })
 

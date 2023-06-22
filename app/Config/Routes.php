@@ -57,7 +57,11 @@ $routes->group('admin', static function ($routes) {
     $routes->get("subcategories/search",'Admin\SubCategoriesController::searchSubCategories');
     $routes->get("subcategories/filter",'Admin\SubCategoriesController::filterSubCategories');
 
+    // Writers Routes
     $routes->get('writers', 'Admin\WriterController::index');
+    $routes->post('writers/create', 'Admin\WriterController::createWriter');
+    $routes->get('writers/get', 'Admin\WriterController::getWriter');
+
     $routes->get('publishers', 'Admin\PublisherController::index');
 });
 

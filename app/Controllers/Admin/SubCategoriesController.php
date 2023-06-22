@@ -31,7 +31,6 @@ class SubCategoriesController extends BaseController
                 ->join('categories', 'subcategories.cat_id = categories.id', 'left')
                 ->orderBy('subcategories.id', 'desc')
                 ->paginate(10, 'default', $page),
-
             "pager" => $this->model->pager->links()
         ];
         return $this->response->setJSON($all);
