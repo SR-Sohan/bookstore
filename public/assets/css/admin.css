@@ -38,7 +38,9 @@
     border: 1px solid teal;
     border-radius: 25px;
 }
-
+#tbody tr td{
+    vertical-align: middle;
+}
 #tbody tr td img{
     width: 100px;
     height: 100px;
