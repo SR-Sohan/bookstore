@@ -41,7 +41,7 @@
                 <input type="text" name="search" id="search" placeholder="Search subcategories...">
                 <input id="searchBtn" class="btn btn-outline-danger" type="button" value="Search">
             </div>
-            <select style="width: 220px;" class="form-select mr-5" aria-label="Default select example">
+            <select id="filterSubCategory" style="width: 220px;" class="form-select mr-5" aria-label="Default select example">
                 <option value="-1" selected>Filter By Category</option>
                 <?php
                 foreach ($categories as $category) {
@@ -65,7 +65,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="tbody">
+            <tbody id="tbody" >
 
             </tbody>
         </table>
@@ -81,6 +81,7 @@
 <?= $this->section("script") ?>
 <script>
     $(document).ready(function() {
+
         // Clear form
         function clearform() {
             $("#category_id").val("-1");
@@ -95,19 +96,34 @@
 
         // Show Subcategories
         function showCategories(data) {
-            let html;
-            $.each(data.subcategories, function(index, subcat) {
+            if (data.subcategories.length < 1) {
+                let html;
                 html += `<tr>`;
                 html += "<td></td>";
-                html += `<td>${index + 1}</td>`;
-                html += `<td id="cat_name">${subcat.name}</td>`;
-                html += `<td id="cat_name">${subcat.catname}</td>`;
-                html += `<td id="cat_des">${subcat.description}</td>`;
-                html += `<td> <button data-id="${subcat.id}" id="editBtn" class="btn btn-outline-success">Edit</button> <button data-id="${subcat.id}" id="deleteBtn"  class="btn btn-outline-danger">Delete</button> </td>`;
+                html += "<td></td>";
+                html += "<td></td>";
+                html += "<td><h4 class=' text-center text-danger my-5 ps-5 ms-5'>Data Not Found!</h4></td>";
+                html += "<td></td>";
+                html += "<td></td>";
                 html += `</tr>`;
-            })
-            $("#tbody").html(html);
-            $('#pagination-links').empty().append(data.pager);
+                $("#tbody").html(html);
+               
+            }else{
+                let html;
+                $.each(data.subcategories, function(index, subcat) {
+                    html += `<tr>`;
+                    html += "<td></td>";
+                    html += `<td>${index + 1}</td>`;
+                    html += `<td id="scat_name">${subcat.name}</td>`;
+                    html += `<td data-catid="${subcat.catid}" id="scat_id">${subcat.catname}</td>`;
+                    html += `<td id="scat_des">${subcat.description}</td>`;
+                    html += `<td> <button data-id="${subcat.id}" id="editBtn" class="btn btn-outline-success">Edit</button> <button data-id="${subcat.id}" id="deleteBtn"  class="btn btn-outline-danger">Delete</button> </td>`;
+                    html += `</tr>`;
+                })
+                $("#tbody").html(html);
+                $('#pagination-links').empty().append(data.pager);
+            }
+
         }
         //Load SubCategories
         function loadData(pageNumber) {
@@ -205,6 +221,94 @@
                 })
 
         });
+
+        // Edit Subcategories
+        $("#tbody").on("click", "#editBtn", function() {
+            $subid = $(this).data("id");
+            $("#subId").val($subid);
+            $("#category_id").val($(this).parent().parent().find("#scat_id").data("catid"));
+            $("#name").val($(this).parent().parent().find("#scat_name").html());
+            $("#description").val($(this).parent().parent().find("#scat_des").html());
+
+            $("#admin_form").show(400);
+            $("#addBtn").val("Update");
+            let icon = $("#icon");
+            icon.toggleClass('fa-plus fa-minus');
+        });
+
+        // Search AutoLoad
+        $('#search').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "<?= base_url('admin/subcategories/autocomplete'); ?>",
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        term: request.term
+                    },
+                    success: function(data) {
+
+                        var suggestions = [];
+                        $.each(data, function(index, item) {
+                            suggestions.push(item.name);
+                        });
+                        response(suggestions);
+                    }
+                });
+            },
+            minLength: 1
+        });
+
+        // Search Subcategories
+        $("#searchBtn").click(function() {
+            let text = $("#search").val();
+
+            if (text == "") {
+                alert("Please enter search keyword");
+            } else {
+                $.ajax({
+                    url: "<?= base_url('admin/subcategories/search') ?>",
+                    type: "GET",
+                    data: {
+                        text: text
+                    },
+                    success: function(data) {
+                        showCategories(data)
+                    }
+                })
+            }
+        });
+
+        // Filter Subcategory
+        $("#filterSubCategory").change(function() {
+            let val = $(this).val();
+            if (val == "-1") {
+                alert("Please select Category");
+            } else {
+                $.ajax({
+                    url: "<?= base_url('admin/subcategories/filter') ?>",
+                    type: "GET",
+                    data: {
+                        id: val
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        showCategories(data)
+                    }
+                })
+            }
+        })
+
+        // Refresh 
+        $("#refresh").click(function() {
+            var isFormVisible = $('#admin_form').is(":visible");
+            if (isFormVisible) {
+                clearform();
+            }
+            $("#search").val("");
+            loadData(1);
+        })
+
     })
 </script>
 <?= $this->endSection() ?>

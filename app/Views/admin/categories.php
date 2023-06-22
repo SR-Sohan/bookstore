@@ -66,6 +66,19 @@
 
         // Show Categories 
         function showCategories(data) {
+            if (data.categories.length < 1) {
+                let html;
+                html += `<tr>`;
+                html += "<td></td>";
+                html += "<td></td>";
+                html += "<td><h4 class=' text-center text-danger my-5 ps-5 ms-5'>Data Not Found!</h4></td>";
+                html += "<td></td>";
+                html += "<td></td>";
+                html += `</tr>`;
+                $("#tbody").html(html);
+               
+            }else{
+
             let html;
             $.each(data.categories, function(index, category) {
                 html += `<tr>`;
@@ -78,6 +91,7 @@
             })
             $("#tbody").html(html);
             $('#pagination-links').empty().append(data.pager);
+        }
         }
 
 

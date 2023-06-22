@@ -70,7 +70,6 @@ class CategoriesController extends BaseController
         $text = $this->request->getVar("text");
         $page = $this->request->getVar('page') ?? 1;
 
-        //$result = $this->model->like('name', $text)->findAll();
 
         $all = [
             "total" => $this->model->like('name', $text)->countAll(),

@@ -53,6 +53,9 @@ $routes->group('admin', static function ($routes) {
     $routes->get("subcategories/data",'Admin\SubCategoriesController::getSubCategories');
     $routes->post("subcategories/create",'Admin\SubCategoriesController::createSubCategories');
     $routes->post("subcategories/delete",'Admin\SubCategoriesController::deleteSubCategories');
+    $routes->post("subcategories/autocomplete",'Admin\SubCategoriesController::autoComplete');
+    $routes->get("subcategories/search",'Admin\SubCategoriesController::searchSubCategories');
+    $routes->get("subcategories/filter",'Admin\SubCategoriesController::filterSubCategories');
 
     $routes->get('writers', 'Admin\WriterController::index');
     $routes->get('publishers', 'Admin\PublisherController::index');
