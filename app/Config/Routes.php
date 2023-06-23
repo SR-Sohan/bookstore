@@ -61,6 +61,10 @@ $routes->group('admin', static function ($routes) {
     $routes->get('writers', 'Admin\WriterController::index');
     $routes->post('writers/create', 'Admin\WriterController::createWriter');
     $routes->get('writers/get', 'Admin\WriterController::getWriter');
+    $routes->post('writers/delete', 'Admin\WriterController::deleteWriter');
+    $routes->get('writers/search', 'Admin\WriterController::searchWriter');
+    $routes->get('writers/filter', 'Admin\WriterController::filterWriter');
+    $routes->post('writers/autocomplete', 'Admin\WriterController::completeWriter');
 
     $routes->get('publishers', 'Admin\PublisherController::index');
 });

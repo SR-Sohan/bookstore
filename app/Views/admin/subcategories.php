@@ -292,7 +292,6 @@
                         id: val
                     },
                     success: function(data) {
-                        console.log(data);
                         showCategories(data)
                     }
                 })
