@@ -280,6 +280,7 @@
             },
             minLength: 1
         });
+        
         // Filter Writers by Country
         $("#filterSubCategory").change(function() {
             let val = $(this).val();
