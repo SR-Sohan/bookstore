@@ -30,11 +30,30 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-//  Basic Routes
-$routes->get("/","Home::index");
+
+
 // Auth Routes
 $routes->get("login","Admin\AuthController::index");
 $routes->get("register","Admin\AuthController::register");
+
+// Client Pannel Routes
+$routes->group("/",static function($routes){
+    
+    $routes->get("","Home::index");
+
+
+    // Categories Routes
+    $routes->get("categories","Client\CategoriesController::index");
+    $routes->get("categories/get","Client\CategoriesController::getCategories");
+
+    // Publishers Routes
+    $routes->get("publishers","Client\PublishersController::index");
+    $routes->get("publishers/get","Client\PublishersController::getPublishers");
+
+    // Authors Routes
+    $routes->get("authors","Client\WrittersController::index");
+    $routes->get("authors/get","Client\WrittersController::getAuthors");
+});
 
 // Admin Pannel Routes
 $routes->group('admin', static function ($routes) {
