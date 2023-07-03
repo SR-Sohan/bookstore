@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend("layouts/layout") ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Stroe</title>
-    <link href="<?= base_url('assets/css/styles.css') ?>" rel="stylesheet" />
-    <link rel="stylesheet" href="<?= base_url('assets/css/admin.css') ?>">
-</head>
-
-<body>
+<?= $this->section("content") ?>
 
     <div class="form_area mt-5">
         <div class="container">
-            <div class="form_wrap w-75 mx-auto mt-5 pt-5">
+            <div class="form_wrap w-75 mx-auto my-5 ">
                 <div class="row align-items-center ">
                     <div class="col-md-6">
                         <div class="singin_form ">
@@ -27,8 +18,8 @@
                                     <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
-                                <input class="btn btn-outline-danger" type="submit" value="Sign In">
-
+                                <input class="common_btn" type="submit" value="Sign In">
+                                <p class="my-3">Don't have account? <a href="<?= base_url("register") ?>">Register</a></p>
                             </form>
                         </div>
                     </div>
@@ -42,6 +33,4 @@
         </div>
     </div>
 
-</body>
-
-</html>
+    <?= $this->endSection() ?>

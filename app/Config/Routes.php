@@ -35,6 +35,7 @@ $routes->set404Override();
 // Auth Routes
 $routes->get("login","Admin\AuthController::index");
 $routes->get("register","Admin\AuthController::register");
+$routes->post("register","Admin\AuthController::register");
 
 // Client Pannel Routes
 $routes->group("/",static function($routes){
@@ -53,6 +54,11 @@ $routes->group("/",static function($routes){
     // Authors Routes
     $routes->get("authors","Client\WrittersController::index");
     $routes->get("authors/get","Client\WrittersController::getAuthors");
+
+    //Profile Routes
+    $routes->get("profile","Client\ProfileController::index");
+    $routes->get("profile/districts","Client\ProfileController::selectDistricts");
+    $routes->get("profile/subcategories","Client\ProfileController::selectSubCategories");
 });
 
 // Admin Pannel Routes

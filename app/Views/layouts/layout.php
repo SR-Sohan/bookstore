@@ -42,8 +42,17 @@
                         </div>
                     </form>
                 </div>
-                <div class="header_signin">
+                <div class="header_signin d-flex align-items-center">
                     <a class="common_btn" href="<?= base_url("login") ?>">Sign in</a>
+                    <div class="dropdown">
+                        <button class="custom_dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           Sohanur Rahman
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?= base_url("profile") ?>">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <nav class="py-4">
@@ -144,27 +153,27 @@
         });
     </script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
 
             // Submenu item show
-            function show(data,place){
+            function show(data, place) {
                 let authors = $(`#${place}`);
-             if(data.data.length){
-                let html = ``;
-                $.each(data.data,function(index,item){
-                    html += ` <li><a href="<?= base_url() ?>${place}/${item.id}">${item.name}</a></li>`;
-                })
-                html += `<li><a href="<?= base_url()?>${place}">See More</a></li>`;
-                authors.html(html);
-             }
+                if (data.data.length) {
+                    let html = ``;
+                    $.each(data.data, function(index, item) {
+                        html += ` <li><a href="<?= base_url() ?>${place}/${item.id}">${item.name}</a></li>`;
+                    })
+                    html += `<li><a href="<?= base_url() ?>${place}">See More</a></li>`;
+                    authors.html(html);
+                }
             }
-           
+
             // Load Authors
             $.ajax({
                 url: "<?= base_url("authors/get") ?>",
                 type: "GET",
-                success:function(data){
-                    show(data,"authors")
+                success: function(data) {
+                    show(data, "authors")
                 }
             });
 
@@ -172,8 +181,8 @@
             $.ajax({
                 url: "<?= base_url("categories/get") ?>",
                 type: "GET",
-                success:function(data){
-                    show(data,"categories")
+                success: function(data) {
+                    show(data, "categories")
                 }
             });
 
@@ -181,8 +190,8 @@
             $.ajax({
                 url: "<?= base_url("publishers/get") ?>",
                 type: "GET",
-                success:function(data){
-                    show(data,"publishers")
+                success: function(data) {
+                    show(data, "publishers")
                 }
             });
 

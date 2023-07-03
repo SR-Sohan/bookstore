@@ -12,6 +12,7 @@
 }
 body {
   font-size: 16px;
+  background-color: #f6f5f5;
 }
 a {
   text-decoration: none;
@@ -40,7 +41,20 @@ img{
     height: 100%;
     object-fit: cover;
 }
+.custom_dropdown{
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  color: #452473;
+  margin-left: 10px;
+}
+.custom_modal{
+  width: 960px;
+}
 /* 
+
+
 
 ================================================================
                        Headear css start 
@@ -305,4 +319,46 @@ nav ul .rotate-on-hover:hover .nav_dropdown{
 .single_author:hover .single_author_img img{
   border: 1px solid #452473;
   border-radius: 50%;
+}
+
+/* 
+
+================================================================
+                       Profile Layout css start 
+================================================================
+
+*/
+.profile_wrap{
+  min-height: 400px;
+}
+.profile_heading{
+  border-bottom: 1px solid #452473;
+}
+.profile_heading h4{
+  color: #452473;
+}
+
+.profile_sidebar{
+  padding: 20px;
+}
+.profile_sidebar ul{
+ 
+  text-align: center;
+}
+.profile_sidebar ul li {
+  border-bottom: 1px solid #452473;
+}
+.profile_sidebar ul li a{
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #452473;
+  line-height: 40px;
+}
+.profile_content{
+  padding: 20px;
+}
+
+.publish_book{
+  text-align: right;
 }
