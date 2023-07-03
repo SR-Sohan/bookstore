@@ -10,7 +10,7 @@
                     <h4>অ্যাকাউন্ট</h4>
                 </div>
                 <div>
-                    <h4>Sohanur Rahman</h4>
+                    <h4><?= session("username") ?></h4>
                 </div>
             </div>
             <div class="row">

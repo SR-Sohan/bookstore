@@ -1,3 +1,4 @@
+<?  $session = session(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,16 +44,21 @@
                     </form>
                 </div>
                 <div class="header_signin d-flex align-items-center">
+                    <?php 
+                        if( !session()->has('logged_in')){
+                    ?>
                     <a class="common_btn" href="<?= base_url("login") ?>">Sign in</a>
+                    <?php }else{ ?>
                     <div class="dropdown">
                         <button class="custom_dropdown dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           Sohanur Rahman
+                        <?= session('username') ?>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="<?= base_url("profile") ?>">My Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a></li>
                         </ul>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
             <nav class="py-4">

@@ -21,6 +21,12 @@ use Psr\Log\LoggerInterface;
  */
 abstract class BaseController extends Controller
 {
+    public function __construct()
+    {
+        // Start the session
+        $session = \Config\Services::session();
+        $session->start();
+    }
     /**
      * Instance of the main Request object.
      *

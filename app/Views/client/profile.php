@@ -16,82 +16,93 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="">
-                    <input type="hidden" name="book_id" id="book_id">
-                    <input type="hidden" name="user_id" id="user_id">
-                    <div class="mb-3">
-                        <select class="form-select mb-3" name="division" id="division">
-                            <option value="-1">Select Division</option>
-                            <?php
+                <?= form_open_multipart(base_url("books/create"), ["id" => "booksForm", "method" => "post"]) ?>
+                <input type="hidden" name="book_id" id="book_id">
+                <input type="hidden" name="user_id" id="user_id" value="<?= session("id") ?>">
+                <div class="mb-3">
+                    <select class="form-select mb-3" name="division" id="division">
+                        <option value="-1">Select Division</option>
+                        <?php
 
-                            if ($divisions) {
-                                foreach ($divisions as $key => $divi) {
-                            ?>
-                                    <option value="<?= $divi['id'] ?>"><?= $divi['name'] ?></option>
-                            <?php
-                                }
-                            } ?>
-                            ?>
-                        </select>
-                        <select class="form-select" name="districts" id="districts">
-                            <option value="-1">Select District</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select mb-3" name="categories" id="categoriesselect">
-                            <option value="-1">Select Category</option>
-                            <?php
+                        if ($divisions) {
+                            foreach ($divisions as $key => $divi) {
+                        ?>
+                                <option value="<?= $divi['id'] ?>"><?= $divi['name'] ?></option>
+                        <?php
+                            }
+                        } ?>
+                        ?>
+                    </select>
+                    <select class="form-select" name="districts" id="districts">
+                        <option value="-1">Select District</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select mb-3" name="categories" id="categoriesselect">
+                        <option value="-1">Select Category</option>
+                        <?php
 
-                            if ($categories) {
-                                foreach ($categories as $key => $cat) {
-                            ?>
-                                    <option value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
-                            <?php
-                                }
-                            } ?>
-                            ?>
-                        </select>
-                        <select class="form-select" name="subcategories" id="subcategories">
-                            <option value="-1">Select SubCategory</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select mb-3" name="writter" id="writter">
-                            <option value="-1">Select Writter</option>
-                            <?php
+                        if ($categories) {
+                            foreach ($categories as $key => $cat) {
+                        ?>
+                                <option value="<?= $cat['id'] ?>"><?= $cat['name'] ?></option>
+                        <?php
+                            }
+                        } ?>
+                        ?>
+                    </select>
+                    <select class="form-select" name="subcategories" id="subcategories">
+                        <option value="-1">Select SubCategory</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select mb-3" name="writter" id="writter">
+                        <option value="-1">Select Writter</option>
+                        <?php
 
-                            if ($writters) {
-                                foreach ($writters as $key => $writter) {
-                            ?>
-                                    <option value="<?= $writter['id'] ?>"><?= $writter['name'] ?></option>
-                            <?php
-                                }
-                            } ?>
-                            ?>
-                        </select>
-                        <select class="form-select" name="" id="">
-                            <option value="-1">Select Publisher</option>
-                            <?php
+                        if ($writters) {
+                            foreach ($writters as $key => $writter) {
+                        ?>
+                                <option value="<?= $writter['id'] ?>"><?= $writter['name'] ?></option>
+                        <?php
+                            }
+                        } ?>
+                        ?>
+                    </select>
+                    <select class="form-select" name="publisher" id="publisher">
+                        <option value="-1">Select Publisher</option>
+                        <?php
 
-                            if ($publishers) {
-                                foreach ($publishers as $key => $publisher) {
-                            ?>
-                                    <option value="<?= $publisher['id'] ?>"><?= $publisher['name'] ?></option>
-                            <?php
-                                }
-                            } ?>
-                            ?>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <select class="form-select mb-3" name="lass="form-control" type="number" name="price" id="price" placeholder="Book Price">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="number" name="page" id="page" placeholder="Book Page No">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" type="file" name="image" id="image">
-                    </div>
+                        if ($publishers) {
+                            foreach ($publishers as $key => $publisher) {
+                        ?>
+                                <option value="<?= $publisher['id'] ?>"><?= $publisher['name'] ?></option>
+                        <?php
+                            }
+                        } ?>
+                        ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select mb-3" name="language" id="language">
+                        <option value="-1">Select Language</option>
+                        <option value="bangla">Bangla</option>
+                        <option value="english">English</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="text" name="name" id="name" placeholder="Book Name">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="price" id="price" placeholder="Book Price">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="number" name="page" id="page" placeholder="Book Page No">
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="file" name="image" id="image">
+                </div>
+                <input class="common_btn" type="submit" value="Add Book">
                 </form>
             </div>
         </div>
@@ -182,7 +193,33 @@
             })
         })
 
+        // Create Books
+        $("#booksForm").submit(function(e) {
+            e.preventDefault();
+            let formdata = new FormData(this);
 
+            $.ajax({
+                url: "<?= base_url('profile/books/create') ?>",
+                type: "POST",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    console.log(data);
+                    // if (data.status) {
+                    //     Swal.fire(
+                    //         'Good job!',
+                    //         data.message,
+                    //         'success'
+                    //     ).then(() => {
+                    //         getWriters(1);
+                    //         clearform();
+                    //     })
+                    // }
+                }
+            });
+
+        })
 
 
     })

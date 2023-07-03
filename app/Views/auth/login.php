@@ -8,7 +8,7 @@
                 <div class="row align-items-center ">
                     <div class="col-md-6">
                         <div class="singin_form ">
-                            <form action="">
+                        <?= form_open_multipart('login',['method' => 'post']) ?>
                                 <h1 class="mb-5 text-danger">Login Form</h1>
                                 <div class="form-floating mb-3">
                                     <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">

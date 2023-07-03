@@ -62,4 +62,19 @@ class ProfileController extends BaseController
 
         return $this->response->setJSON(["status" => true,"data" => $data]);
     }
+
+    public function booksCreates(){
+        $userid = $this->request->getVar('user_id');
+        $division = $this->request->getVar('division');
+        $districts = $this->request->getVar('districts');
+        $categories = $this->request->getVar('categories');
+        $subcategories = $this->request->getVar('subcategories');
+        $writter = $this->request->getVar('writter');
+        $publisher = $this->request->getVar('publisher');
+        $language = $this->request->getVar('language');
+        $name = $this->request->getVar('name');
+        $price = $this->request->getVar('price');
+        $page = $this->request->getVar('page');
+        $image = $this->request->getFile('image');
+    }
 }
