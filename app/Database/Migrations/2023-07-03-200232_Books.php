@@ -68,6 +68,10 @@ class Books extends Migration
                 "type" => "INT",
                 "constraint" => 11,
             ],
+            "image" => [
+                "type" => "VARCHAR",
+                "constraint" => 256,
+            ],
             "created_at" => [
                 "type" => "DATETIME",
                 "default" => new RawSql('CURRENT_TIMESTAMP'),

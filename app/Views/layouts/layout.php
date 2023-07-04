@@ -19,7 +19,9 @@
         <div class="container">
             <div class="top_header d-flex align-items-center justify-content-between">
                 <div class="header_logo_area">
-                    <a href="<?= base_url() ?>">Book Store</a>
+                    <a href="<?= base_url() ?>">
+                    <img style="width: 130px;" src="<?= base_url("assets/image/icon/logo.png") ?>" alt="">
+                    </a>
                 </div>
                 <div class="header_search">
                     <form class="form_area d-flex align-items-center" action="">
@@ -88,7 +90,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="single_footer">
-                        <img src="" alt="">
+                        <img class="bg-white rounded my-2" style="width: 180px;" src="<?= base_url("assets/image/icon/logo.png") ?>"  alt="">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, accusamus pariatur eos doloribus ea quaerat debitis recusandae magni doloremque, odio veniam obcaecati culpa eius fuga veritatis placeat rerum, alias error.</p>
                     </div>
                 </div>
@@ -122,6 +124,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="<?= base_url("assets/js/slick.min.js") ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $('.responsive-slider').slick({
             dots: false,

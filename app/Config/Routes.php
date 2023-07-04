@@ -61,7 +61,9 @@ $routes->group("/",static function($routes){
     $routes->get("profile","Client\ProfileController::index");
     $routes->get("profile/districts","Client\ProfileController::selectDistricts");
     $routes->get("profile/subcategories","Client\ProfileController::selectSubCategories");
+    $routes->get("profile/books/get","Client\ProfileController::booksGet");
     $routes->post("profile/books/create","Client\ProfileController::booksCreates");
+    $routes->post("profile/books/delete","Client\ProfileController::booksDelete");
 });
 
 // Admin Pannel Routes

@@ -113,27 +113,11 @@
 
 
 <div class="publish_book_area mt-3">
-    <div class="row">
-        <div class="container">
-            <div class="row g-3">
-                <div class="col-lg-4">
-                    <div class="single_item">
-                        <div class="img_box">
-                            <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                        </div>
-                        <div class="content_box">
-                            <h3><a href="#">Book Title</a></h3>
-                            <h5>Authors</h5>
-                            <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                        </div>
-                        <div class="content_btn d-flex justify-content-around pb-2">
-                            <button class="btn btn-outline-success">View</button>
-                            <button class="btn btn-outline-danger">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div id="booksrow" class="row g-3">
+
         </div>
+        <div id="pagination-links" class="d-flex justify-content-center"></div>
     </div>
 </div>
 <!-- publish book area end -->
@@ -143,6 +127,61 @@
 <?= $this->section("profilescript") ?>
 <script>
     $(document).ready(function() {
+
+        // Show Books
+        function showBooks(data) {
+            console.log(data);
+
+            let book = $("#booksrow");
+            let html = ``;
+
+            book.html("");
+            $.each(data.books, function(index, book) {
+
+                html += `<div class="col-lg-6">
+                    <div class="single_item">
+                        <div class="img_box">
+                            <img style="height: 150px" src="<?= base_url("uploads/books/") ?>${book.image}" alt="">
+                        </div>
+                        <div class="content_box">
+                            <h3><a href="#">${book.name}</a></h3>
+                            <h5>${book.wname}</h5>
+                            <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>${book.price}</p>
+                        </div>
+                        <div class="content_btn d-flex justify-content-around pb-2">
+                            <button class="btn btn-outline-success">View</button>
+                            <button id="deleteBtn" data-id="${book.id}" class="btn btn-outline-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>`;
+            })
+
+            book.html(html);
+            $('#pagination-links').empty().append(data.pager);
+        }
+
+        // Get Books
+        function getBooks(pageNumber) {
+            $.ajax({
+                url: "<?= base_url('profile/books/get') ?>",
+                type: "GET",
+                data: {
+                    page: pageNumber,
+                    userid: <?= session("id") ?>
+                },
+                success: function(data) {
+                    if (data.books) {
+                        showBooks(data);
+                    }
+                }
+            })
+        }
+        getBooks(1);
+        $('#pagination-links').on('click', 'a', function(e) {
+            e.preventDefault();
+            let pageNumber = $(this).attr('href').split('page=')[1];
+            getBooks(pageNumber);
+        });
 
         // Display data
         function displayData(data, place) {
@@ -205,20 +244,56 @@
                 processData: false,
                 contentType: false,
                 success: function(data) {
-                    console.log(data);
-                    // if (data.status) {
-                    //     Swal.fire(
-                    //         'Good job!',
-                    //         data.message,
-                    //         'success'
-                    //     ).then(() => {
-                    //         getWriters(1);
-                    //         clearform();
-                    //     })
-                    // }
+                    if (data.status) {
+                        Swal.fire(
+                            'Good job!',
+                            data.message,
+                            'success'
+                        ).then(() => {
+                            $("#publishbook").modal('hide');
+                            getBooks(1);
+                        })
+                    }
                 }
             });
 
+        })
+
+        // Delete books
+        $("#booksrow").on("click", "#deleteBtn", function() {
+            $id = $(this).data("id");
+            Swal.fire({
+                    title: 'Do you want to delete the Book??',
+                    showDenyButton: true,
+                    showCancelButton: false,
+                    confirmButtonText: 'Delete',
+                    denyButtonText: `Don't delete`,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "<?= base_url("profile/books/delete") ?>",
+                            type: "POST",
+                            data: {
+                                id: $id
+                            },
+                            success: function(data) {
+                                if (data.status) {
+                                    Swal.fire(
+                                        'Good job!',
+                                        data.message,
+                                        'success'
+                                    ).then(() => {
+                                        getBooks(1);
+                                    })
+                                }
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire('Changes are not saved', '', 'info')
+                    }
+
+                })
         })
 
 

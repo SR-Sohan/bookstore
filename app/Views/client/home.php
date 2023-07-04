@@ -34,241 +34,31 @@
 <!-- book by categories area start  -->
 <div class="book_by_categories_area my-5">
     <div class="container">
-        
+
         <!-- single Category book start  -->
         <div class="single_category_book">
             <h2>Latest Books</h2>
             <div class="responsive-slider">
-                
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                <?php
+                if ($newbook) {
+                    foreach ($newbook as $key => $book) {
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                ?>
+                        <div style="height: 350px;" class="single_item d-flex align-items justify-content-between flex-column align-self-stretch">
+                            <div class="img_box">
+                                <img style="height: 150px" src="<?= base_url("uploads/books/") ?><?= $book["image"] ?>" alt="">
+                            </div>
+                            <div class="content_box ">
+                                <h3><a href="#"><?= $book["name"] ?></a></h3>
+                                <h5><a href="#"><?= $book["wname"] ?></a></h5>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
+                            </div>
+                        </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                <?php }
+                } ?>
 
             </div>
         </div>
@@ -276,238 +66,30 @@
 
         <!-- single Category book start  -->
         <div class="single_category_book">
-            <h2>Categories Books</h2>
+            <h2>ইসলামি বই</h2>
             <div class="responsive-slider">
-                
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                <?php
+                if ($islamicbook) {
+                    foreach ($islamicbook as $key => $book) {
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                ?>
+                        <div style="height: 350px;" class="single_item d-flex align-items justify-content-between flex-column align-self-stretch">
+                            <div class="img_box">
+                                <img style="height: 150px" src="<?= base_url("uploads/books/") ?><?= $book["image"] ?>" alt="">
+                            </div>
+                            <div class="content_box ">
+                                <h3><a href="#"><?= $book["name"] ?></a></h3>
+                                <h5><a href="#"><?= $book["wname"] ?></a></h5>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
+                            </div>
+                        </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                <?php }
+                } ?>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -515,239 +97,27 @@
 
         <!-- single Category book start  -->
         <div class="single_category_book">
-            <h2>Categories</h2>
+            <h2>গল্প</h2>
             <div class="responsive-slider">
-                
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+            <?php
+                if ($story) {
+                    foreach ($story as $key => $book) {
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
+                ?>
+                        <div style="height: 350px;" class="single_item d-flex align-items justify-content-between flex-column align-self-stretch">
+                            <div class="img_box">
+                                <img style="height: 150px" src="<?= base_url("uploads/books/") ?><?= $book["image"] ?>" alt="">
+                            </div>
+                            <div class="content_box ">
+                                <h3><a href="#"><?= $book["name"] ?></a></h3>
+                                <h5><a href="#"><?= $book["wname"] ?></a></h5>
+                                <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
+                            </div>
+                        </div>
 
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
-                <div class="single_item">
-                    <div class="img_box">
-                        <img src="<?= base_url("assets/images/books/book1.jpg") ?>" alt="">
-                    </div>
-                    <div class="content_box">
-                        <h3><a href="#">Book Title</a></h3>
-                        <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>600</p>
-                    </div>
-                </div>
-
+                <?php }
+                } ?>
             </div>
         </div>
         <!-- single Category book end  -->

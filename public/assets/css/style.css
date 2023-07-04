@@ -135,6 +135,7 @@ nav ul .rotate-on-hover:hover .item {
   z-index: 999;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   padding: 10px;
   visibility: hidden;
   left: 0;
@@ -146,6 +147,7 @@ nav ul .rotate-on-hover:hover .nav_dropdown{
 }
 .nav_dropdown li{
   margin: 0px 20px;
+  margin-bottom: 5px;
 }
 .nav_dropdown li a{
     color: #13112b;
